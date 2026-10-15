@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>The Coffee House | Cafe & Restaurant</title>
+    <meta name="description" content="Visit The Coffee House for fresh coffee, delicious food, desserts and a relaxing cafe experience.">
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Contact Popup Styling -->
+    <style>
+        .contact-popup {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            background: rgba(0, 0, 0, 0.75);
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+            overflow-y: auto;
+        }
+
+        .contact-form-box {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+            background: #fff;
+            color: #333;
+            padding: 35px;
+            border-radius: 15px;
+            box-sizing: border-box;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+        }
+
+        .contact-form-box h2 {
+            margin: 8px 0;
+        }
+
+        .contact-form-box .form-description {
+            margin-bottom: 20px;
+        }
+
+        .contact-form-box label {
+            display: block;
+            margin: 14px 0 6px;
+            font-weight: 600;
+        }
+
+        .contact-form-box input,
+        .contact-form-box textarea {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 7px;
+            box-sizing: border-box;
+            font: inherit;
+            background: #fff;
+            color: #333;
+        }
+
+        .contact-form-box input:focus,
+        .contact-form-box textarea:focus {
+            outline: 2px solid #9a6847;
+            border-color: #9a6847;
+        }
+
+        .contact-form-box textarea {
+            resize: vertical;
+        }
+
+        .contact-form-box .submit-contact {
+            width: 100%;
+            margin-top: 20px;
+            cursor: pointer;
+            font: inherit;
+        }
+
+        .close-form {
+            position: absolute;
+            top: 8px;
+            right: 15px;
+            border: none;
+            background: transparent;
+            color: #333;
+            font-size: 32px;
+            cursor: pointer;
+        }
+
+        .form-success {
+            display: none;
+            margin-top: 15px;
+            color: #26733a;
+            font-weight: 600;
+        }
+
+        @media (max-width: 480px) {
+            .contact-form-box {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header class="header">
+        <a href="#home" class="logo">☕ The Coffee House</a>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#menu">Menu</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <p class="eyebrow">WELCOME TO THE COFFEE HOUSE</p>
+            <h1>Good Coffee.<br>Great Moments.</h1>
+
+            <p>
+                Discover the perfect blend of fresh coffee,
+                delicious food and a cozy atmosphere.
+                Your favorite place to relax and connect.
+            </p>
+
+            <a href="#menu" class="btn">Explore Our Menu</a>
+            <a href="#contact" class="btn btn-outline">Visit Our Cafe</a>
+        </div>
+    </section>
+
+    <!-- Cafe Information -->
+    <section class="features">
+        <div>
+            <span>☕</span>
+            <h3>Fresh Coffee</h3>
+            <p>Freshly prepared coffee for every mood.</p>
+        </div>
+
+        <div>
+            <span>🥐</span>
+            <h3>Fresh Food</h3>
+            <p>Tasty snacks, sandwiches and desserts.</p>
+        </div>
+
+        <div>
+            <span>🛋️</span>
+            <h3>Cozy Atmosphere</h3>
+            <p>A comfortable place to meet and relax.</p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about" id="about">
+        <div class="about-image">
+            <img
+                src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1000&q=85"
+                alt="Warm and welcoming cafe interior">
+        </div>
+
+        <div class="about-content">
+            <p class="eyebrow">OUR STORY</p>
+            <h2>A Little Coffee, A Lot of Happiness</h2>
+
+            <p>
+                Welcome to The Coffee House, a place created
+                for coffee lovers and food enthusiasts.
+                We believe that great coffee makes ordinary
+                moments special.
+            </p>
+
+            <p>
+                From rich espresso to creamy cold coffee,
+                delicious sandwiches and sweet desserts,
+                our menu is designed to bring people together.
+                Come with friends, meet your family or enjoy
+                a peaceful coffee break.
+            </p>
+
+            <div class="about-details">
+                <p>✓ Freshly prepared beverages</p>
+                <p>✓ Comfortable seating</p>
+                <p>✓ Friendly cafe experience</p>
+            </div>
+
+            <a href="#contact" class="btn">Find Our Cafe</a>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="section menu-section" id="menu">
+        <div class="section-heading">
+            <p class="eyebrow">TASTE SOMETHING SPECIAL</p>
+            <h2>Our Popular Menu</h2>
+            <p>Choose your favorite coffee, snacks and desserts.</p>
+        </div>
+
+        <div class="filters">
+            <button class="filter active" data-category="all">All</button>
+            <button class="filter" data-category="coffee">Coffee</button>
+            <button class="filter" data-category="food">Food</button>
+            <button class="filter" data-category="dessert">Desserts</button>
+        </div>
+
+        <div class="menu-grid">
+
+            <article class="menu-card" data-category="coffee">
+                <img
+                    src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=700&q=80"
+                    alt="Freshly brewed cappuccino">
+
+                <div class="menu-info">
+                    <span class="category">COFFEE</span>
+                    <h3>Cappuccino</h3>
+                    <p>Rich espresso topped with smooth milk foam.</p>
+                    <div class="menu-bottom">
+                        <strong>₹149</strong>
+                        <button class="add-btn" data-name="Cappuccino" data-price="149">+ Add</button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="menu-card" data-category="coffee">
+                <img
+                    src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=700&q=80"
+                    alt="Iced coffee">
+
+                <div class="menu-info">
+                    <span class="category">COFFEE</span>
+                    <h3>Cold Coffee</h3>
+                    <p>Chilled, creamy and refreshing coffee.</p>
+                    <div class="menu-bottom">
+                        <strong>₹179</strong>
+                        <button class="add-btn" data-name="Cold Coffee" data-price="179">+ Add</button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="menu-card" data-category="coffee">
+                <img
+                    src="https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?auto=format&fit=crop&w=700&q=80"
+                    alt="Espresso coffee">
+
+                <div class="menu-info">
+                    <span class="category">COFFEE</span>
+                    <h3>Espresso</h3>
+                    <p>Bold, intense coffee with a rich aroma.</p>
+                    <div class="menu-bottom">
+                        <strong>₹99</strong>
+                        <button class="add-btn" data-name="Espresso" data-price="99">+ Add</button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="menu-card" data-category="food">
+                <img
+                    src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=700&q=80"
+                    alt="Fresh sandwich">
+
+                <div class="menu-info">
+                    <span class="category">FOOD</span>
+                    <h3>Club Sandwich</h3>
+                    <p>Fresh bread, vegetables and tasty fillings.</p>
+                    <div class="menu-bottom">
+                        <strong>₹199</strong>
+                        <button class="add-btn" data-name="Club Sandwich" data-price="199">+ Add</button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="menu-card" data-category="food">
+                <img
+                    src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=700&q=80"
+                    alt="Freshly baked pizza">
+
+                <div class="menu-info">
+                    <span class="category">FOOD</span>
+                    <h3>Classic Pizza</h3>
+                    <p>A delicious cheesy treat for sharing.</p>
+                    <div class="menu-bottom">
+                        <strong>₹249</strong>
+                        <button class="add-btn" data-name="Classic Pizza" data-price="249">+ Add</button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="menu-card" data-category="dessert">
+                <img
+                    src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=700&q=80"
+                    alt="Chocolate cake">
+
+                <div class="menu-info">
+                    <span class="category">DESSERT</span>
+                    <h3>Chocolate Cake</h3>
+                    <p>Soft chocolate cake for a sweet ending.</p>
+                    <div class="menu-bottom">
+                        <strong>₹159</strong>
+                        <button class="add-btn" data-name="Chocolate Cake" data-price="159">+ Add</button>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- Shopping Cart -->
+    <section class="section order-section" id="order">
+        <div class="cart-box">
+            <p class="eyebrow">YOUR SELECTION</p>
+            <h2>Your Order</h2>
+
+            <div id="cart-items" aria-live="polite">
+                Your cart is empty.
+            </div>
+
+            <div class="cart-total">
+                <span>Total Amount</span>
+                <strong>₹<span id="total">0</span></strong>
+            </div>
+
+            <button class="btn" id="checkout-btn">
+                Review Order
+            </button>
+
+            <p class="small-note">
+                Demo only: orders are not sent to the cafe.
+            </p>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="section gallery-section" id="gallery">
+        <div class="section-heading">
+            <p class="eyebrow">OUR CAFE VIBES</p>
+            <h2>A Look Inside</h2>
+            <p>Good food, great coffee and relaxing moments.</p>
+        </div>
+
+        <div class="gallery-grid">
+            <img
+                src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=700&q=80"
+                alt="Coffee preparation">
+
+            <img
+                src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=700&q=80"
+                alt="Cafe seating area">
+
+            <img
+                src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=700&q=80"
+                alt="Coffee served in a cafe">
+
+            <img
+                src="https://media.istockphoto.com/id/1428594094/photo/empty-coffee-shop-interior-with-wooden-tables-coffee-maker-pastries-and-pendant-lights.jpg?s=612x612&w=0&k=20&c=dMqeYCJDs3BeBP_jv93qHRISDt-54895SPoVc6_oJt4="
+                alt="Coffee shop interior">
+
+            <img
+                src="https://t3.ftcdn.net/jpg/06/22/17/92/360_F_622179282_tcxozP2YQcOGQU5hDaGmO6MWQOqS9pmi.jpg"
+                alt="Cafe atmosphere">
+
+            <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROnNrOlauWzRiUXa2YRG2qhrhn20Wp38cUyfal5ZMH5gtKlFbBJWTUAVI&s=10"
+                alt="Coffee and cafe">
+        </div>
+    </section>
+
+    <!-- Contact Details -->
+    <section class="section contact-section" id="contact">
+        <div class="section-heading">
+            <p class="eyebrow">WE WOULD LOVE TO SEE YOU</p>
+            <h2>Visit The Coffee House</h2>
+            <p>Come in for a coffee or get in touch with us.</p>
+        </div>
+
+        <div class="contact-grid">
+            <div class="contact-card">
+                <span>📍</span>
+                <h3>Our Address</h3>
+                <p>Your Cafe Address, Your City, India</p>
+            </div>
+
+            <div class="contact-card">
+                <span>🕒</span>
+                <h3>Opening Hours</h3>
+                <p>Monday – Sunday</p>
+                <p>9:00 AM – 10:00 PM</p>
+            </div>
+
+            <div class="contact-card">
+                <span>📞</span>
+                <h3>Contact Us</h3>
+                <p>+91 9467202512</p>
+                <p>Ranaji@yourcafe.com</p>
+            </div>
+        </div>
+
+        <a href="https://maps.google.com/" target="_blank"
+           rel="noopener noreferrer" class="btn">
+            Find Us on Google Maps
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <a href="#home" class="logo">☕ The Coffee House</a>
+        <p>Made with love for coffee lovers.</p>
+        <p>© 2026 The Coffee House. All rights reserved.</p>
+    </footer>
+
+    <!-- Contact Form Popup -->
+    <div id="contactFormPopup" class="contact-popup"
+         role="dialog" aria-modal="true"
+         aria-labelledby="contactFormTitle">
+
+        <div class="contact-form-box">
+
+            <button type="button" class="close-form"
+                    id="closeContactForm"
+                    aria-label="Close contact form">&times;</button>
+
+            <p class="eyebrow">GET IN TOUCH</p>
+            <h2 id="contactFormTitle">Contact Us</h2>
+            <p class="form-description">
+                We would love to hear from you!
+            </p>
+
+            <form id="contactForm">
+
+                <label for="contactName">Full Name</label>
+                <input type="text" id="contactName" name="name"
+                       placeholder="Enter your name" required>
+
+                <label for="contactEmail">Email Address</label>
+                <input type="email" id="contactEmail" name="email"
+                       placeholder="Enter your email" required>
+
+                <label for="contactPhone">Phone Number</label>
+                <input type="tel" id="contactPhone" name="phone"
+                       placeholder="Enter your phone number">
+
+                <label for="contactMessage">Your Message</label>
+                <textarea id="contactMessage" name="message"
+                          rows="4" placeholder="Write your message..."
+                          required></textarea>
+
+                <button type="submit" class="btn submit-contact">
+                    Send Message
+                </button>
+
+                <p id="formSuccess" class="form-success"
+                   role="status" aria-live="polite">
+                    Thank you! Your message has been submitted.
+                </p>
+
+            </form>
+        </div>
+    </div>
+
+    <!-- Contact Popup JavaScript -->
+    <script>
+        const contactPopup = document.getElementById("contactFormPopup");
+        const contactForm = document.getElementById("contactForm");
+        const contactName = document.getElementById("contactName");
+        const formSuccess = document.getElementById("formSuccess");
+
+        function openContactForm(event) {
+            if (event) event.preventDefault();
+
+            contactPopup.style.display = "flex";
+            document.body.style.overflow = "hidden";
+
+            setTimeout(function () {
+                contactName.focus();
+            }, 50);
+        }
+
+        function closeContactForm() {
+            contactPopup.style.display = "none";
+            document.body.style.overflow = "";
+        }
+
+        // Open popup from all links pointing to #contact
+        document.querySelectorAll('a[href="#contact"]').forEach(function(link) {
+            link.addEventListener("click", openContactForm);
+        });
+
+        // Close button
+        document.getElementById("closeContactForm").addEventListener("click", function() {
+            closeContactForm();
+        });
+
+        // Close when clicking outside the form
+        contactPopup.addEventListener("click", function(event) {
+            if (event.target === contactPopup) {
+                closeContactForm();
+            }
+        });
+
+        // Close with Escape key
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "Escape" && contactPopup.style.display === "flex") {
+                closeContactForm();
+            }
+        });
+
+        // Demo form submission
+        contactForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            formSuccess.style.display = "block";
+            contactForm.reset();
+        });
+    </script>
+
+    <!-- Existing JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+</html>
